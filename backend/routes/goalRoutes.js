@@ -21,6 +21,8 @@ const {
 */
 
 router.route('/').get(getGoal).post(setGoal)
-router.route('/').delete(deleteGoal).put(updateGoal)
+//If the ":id" portion is missing the PUT and DELETE requests will not work
+//Simple fix that took way to long
+router.route('/:id').put(updateGoal).delete(deleteGoal)
 
 module.exports = router

@@ -1,9 +1,12 @@
-//includes express framework
+//Imports express
 const express = require('express')
-//Includes dotenv for enviroment variables
+const colors = require('colors')
+//Imports dotenv for enviroment variables
 const dotenv = require('dotenv').config()
-//Error handler from errorMiddleware.js
+//Imports error handler from errorMiddleware.js
 const {errorHandler} = require('./middleware/errorMiddleware')
+//Imports db.js
+const connectDB = require('./config/db')
 
 /*
     Defines the port the server will run on
@@ -12,6 +15,9 @@ const {errorHandler} = require('./middleware/errorMiddleware')
     if the port defined in the .env does not work the server will try to run on 5000
 */
 const port = process.env.PORT || 5000
+
+//Calls function to connect to mongoDB
+connectDB()
 
 //Intializes express with variable called app
 const app = express()
@@ -25,6 +31,7 @@ app.use(express.urlencoded({ extended: false}))
 //Directs to goalRoutes.js file
 app.use('/api/goals', require('./routes/goalRoutes'))
 
+//Calls error handles function to be used for app errors
 app.use(errorHandler)
 
 //listen takes in the port number and prints to the command line the messages bellow

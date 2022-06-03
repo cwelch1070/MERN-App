@@ -11,6 +11,8 @@ const {
     deleteGoal 
 } = require('../controllers/goalController')
 
+const { protect } = require('../middleware/authMiddleware')
+
 /*
     Defines the route that is taken to reach the server
     Makes get request and then responds with get goals
@@ -20,9 +22,13 @@ const {
     file.
 */
 
-router.route('/').get(getGoal).post(setGoal)
+//The type of request that is made is defined in this file.
+//The first line bellow does a GET and POST and the second does a PUT and DELETE
+//The protect keyword will require a token is being imported above throught cosnt {protect}
+router.route('/').get(protect, getGoal).post(protect, setGoal)
+
 //If the ":id" portion is missing the PUT and DELETE requests will not work
 //Simple fix that took way to long
-router.route('/:id').put(updateGoal).delete(deleteGoal)
+router.route('/:id').put(protect, updateGoal).delete(protect, deleteGoal)
 
 module.exports = router

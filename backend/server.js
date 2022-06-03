@@ -30,6 +30,8 @@ app.use(express.urlencoded({ extended: false}))
 
 //Directs to goalRoutes.js file
 app.use('/api/goals', require('./routes/goalRoutes'))
+//Directs to userRoutes.js
+app.use('/api/users', require('./routes/userRoutes'))
 
 //Calls error handles function to be used for app errors
 app.use(errorHandler)

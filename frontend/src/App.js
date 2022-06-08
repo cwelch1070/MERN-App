@@ -1,5 +1,7 @@
 //I think this file is routering and connecting all the pages so they have the same header?
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import Header from './components/Header'
 import Dashboard from './pages/Dashboard'
 import Login from './pages/Login'
@@ -7,6 +9,7 @@ import Register from './pages/Register'
 
 function App() {
   return (
+    <>
     <Router>
       <div className='container'>
         <Header />
@@ -17,6 +20,8 @@ function App() {
         </Routes>
       </div>
     </Router>
+    <ToastContainer/>
+    </>
   );
 }
 

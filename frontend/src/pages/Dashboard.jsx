@@ -1,11 +1,28 @@
 //This file handles the Dashboard page only
+import {useEffect} from 'react'
+import {useNavigate} from 'react-router-dom'
+import {useSelector} from 'react-redux'
+import GoalForm from '../components/GoalForm'
+
 function Dashboard() {
-  return (
-    <div>Dashboard
-      <h1>Hello World</h1>
-    </div>
-    
-  )
+  //Prevents non logged in user from accessing the dashboard
+  const navigate = useNavigate()
+
+  const {user} = useSelector((state) => state.auth)
+
+  useEffect(() => {
+    if(!user) {
+      navigate('/login')
+    }
+  }, [user, navigate])
+  return <>
+    <section>
+      <h1>Welcome {user && user.name}</h1>
+      <p>Goals Dashboard</p>
+    </section>
+
+    <GoalForm />
+  </>
 }
 
 export default Dashboard

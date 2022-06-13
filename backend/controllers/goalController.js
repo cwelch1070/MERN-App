@@ -68,7 +68,7 @@ const updateGoal = asyncHandler (async(req, res) => {
 // @desc Delete goal
 // @route DELETE /api/goals/:id
 // @access Private
-const deleteGoal = asyncHandler (async(req, res) => {
+const deleteGoal = asyncHandler(async(req, res) => {
     const goal = await Goal.findById(req.params.id)
 
     if(!goal) {
@@ -89,9 +89,9 @@ const deleteGoal = asyncHandler (async(req, res) => {
     }
 
     //Does not need to be assigned a variable because it is being deleted
-    await Goal.deleteOne()
+    await goal.deleteOne()
 
-    res.status(200).json({ id: req.params.id })
+    res.status(200).json({ id: req.params.id }) 
 })
 
 module.exports = {

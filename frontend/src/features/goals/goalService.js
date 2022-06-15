@@ -48,6 +48,7 @@ const deleteGoal = async (goalId, token) => {
     //for the HTTP request to follow as a result a 404 is thrown 
     //I realized the code was working properly when I tested the HTTP delete request on port 3000 with postman and
     //It functioned properly which led me to believe the code itself was working as it should.
+    //In short, the path to the goal was incorrect and that is why 404 occured because the page actually did not exist
     const response = await axios.delete(API_URL + '/' + goalId, config)
 
     return response.data

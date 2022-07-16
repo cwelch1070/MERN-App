@@ -1,5 +1,4 @@
 //Something to do with create goals
-//Stopped at 43:42 https://www.youtube.com/watch?v=UXjMo25Nnvc&list=PLillGF-RfqbbQeVSccR9PGKHzPJSWqcsm&index=4
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
 import goalService from './goalService'
 
